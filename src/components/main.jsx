@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import Add from '../images/add.png';
 
 function Main() {
     return (
@@ -26,16 +27,92 @@ function Main() {
                 <div className="headerContainer">
 
                     {/* Add Item */}
-                    <div className="headerLeft"></div>
+                    <div className="headerLeft">
+                        <p>ITEM</p>
+                        <img src={Add} alt="Add" className='addImage' />
+                    </div>
                     {/* Item Categories */}
-                    <div className="headerRight"></div>
+                    <div className="headerRight">
+                        <p>PRICE</p>
+                        <p>QTY</p>
+                        <p>CATEGORY</p>
+                        <p>ID</p>
+                    </div>
 
                 </div>
 
                 {/* Contains the Items and Item Specifics */}
                 <div className="tableContainer">
-                    <div className="itemName"></div>
-                    <div className="itemSpecifics"></div>
+
+                    <div className="itemName">
+                        <p>Sausage</p>
+                        <p>Pizza</p>
+                        <p>Doughnut</p>
+                        <p>Sausage</p>
+                        <p>Pizza</p>
+                        <p>Doughnut</p>
+                        <p>Sausage</p>
+                        <p>Pizza</p>
+                        <p>Doughnut</p>
+                    </div>
+
+                    <div className="itemSpecificsContainer">
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Frozen</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Frozen</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Frozen</p>
+                            <p>1</p>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
