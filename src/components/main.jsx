@@ -1,5 +1,6 @@
 import '../styles/main.css';
 import Add from '../images/add.png';
+import Edit from '../images/edit.png';
 
 function Main() {
     return (
@@ -62,55 +63,83 @@ function Main() {
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
-                        </div>
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Frozen</p>
-                            <p>1</p>
-                        </div>
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Grocery</p>
-                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
                         </div>
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
-                        </div>
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Frozen</p>
-                            <p>1</p>
-                        </div>
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Grocery</p>
-                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
                         </div>
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
-                        </div>
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Frozen</p>
-                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
                         </div>
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
                         </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
+                        </div>
+                        <div className="itemSpecifics">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>Grocery</p>
+                            <p>1</p>
+                            <div className="buttonContainer">
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </div>
+                        </div>
+                        
                     </div>
 
                 </div>

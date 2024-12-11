@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --produce-color: #a7c957;
+    --frozen-color: #48cae4;
+    --fridge-color: #ffc8dd;
+    --deli-color: #ee6055;
+    --bakery-color: #f4a259;
+    --dry-color: #ffd500;
+}
+
 body {
 font-family: 'Inria Sans', sans-serif;
 }
@@ -98,13 +107,20 @@ color: #333;
     font-size: 18px; 
     font-weight: 700;
 
-    border: solid 1px #000;
+    border: solid 1px #747474;
     border-radius: 10px;
 }
 
 .addImage {
     height: 42px;
     margin-left: 20px;
+
+    transition: 0.3s ease;
+}
+
+.addImage:hover {
+    transform: scale(125%);
+    cursor: pointer;
 }
 
 .headerRight {
@@ -112,21 +128,27 @@ color: #333;
     width: 40%;
 
     display: flex;
-    justify-content: space-evenly;
     text-align: center;
 }
 
 .headerRight p {
-    padding: 10px;
+    padding: 10px 0px;
     font-weight: 700;
     font-size: 18px;
-    width: 20%;
+    width: 15%;
     margin-left: 2.5%;
     margin-right: 2.5%;
 
-    border: solid 1px #000;
+    -webkit-box-shadow: 0px 0px 0px 1px #747474;
+    -moz-box-shadow: 0px 0px 0px 1px #747474;
+    box-shadow: 0px 0px 0px 1px #747474;
+
     border-radius: 10px;
+
+    /* border: solid 1px #000;
+    border-radius: 10px; */
 }
+
 
 .tableContainer {
     display: flex;
@@ -146,11 +168,11 @@ color: #333;
 .itemName p {
     font-weight: 700;
     font-size: 18px;
-    padding: 10px;
+    padding: 20px;
 
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #747474;
+    border-left: 1px solid #747474;
+    border-bottom: 1px solid #747474;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 
@@ -165,7 +187,6 @@ color: #333;
 
 .itemSpecifics {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
     text-align: center;
 
@@ -174,25 +195,40 @@ color: #333;
     width: 100%;
     font-weight: 700;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .itemSpecifics p {
-    padding: 10px;
-    width: 25%;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    padding: 20px 0px;
+    min-width: 20%;
+    
+    border-top: 1px solid #747474;
+    border-bottom: 1px solid #747474;
 
     /* background-color: lightskyblue; */
 }
 
-.itemSpecifics p:last-child {
-    border-right: 1px solid #000;
+
+.buttonContainer {
+    min-width: 20%;
+    padding: 20px 0px;
+
+    border-top: 1px solid #747474;
+    border-right: 1px solid #747474;
+    border-bottom: 1px solid #747474;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
+.editButton {
+    height: 18px;
+    transition: 0.3s ease;
+}
 
-
+.buttonContainer:hover .editButton {
+    transform: scale(125%);
+    cursor: pointer;
+}
 
 
 
