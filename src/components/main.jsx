@@ -25,7 +25,18 @@ function Main() {
                     placeholder="Search product name..."
                 />
                 {/* Filter Button */}
-                <button className="button filter">Filter</button>
+                {/* <button className="button filter">Filter</button> */}
+
+                <select className="button filter" id="filterOptions">
+                    <option value="FILTER">FILTER</option>
+                    <option value="Price">PRICE</option>
+                    <option value="Quantity">QUANTITY</option>
+                    <option value="Category">CATEGORY</option>
+                    <option value="Id">ID</option>
+                    <option value="Name">NAME</option>
+                </select>
+
+
             </div>
 
             {/* NEED: Container for Table, Header Container for Item Details, 2 Containers side-by-side under header */}
