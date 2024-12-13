@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --produce-color: #a7c957;
-    --frozen-color: #48cae4;
+    --produce-color: #CEF86D;
+    --frozen-color: #9BEEFF;
     --fridge-color: #ffc8dd;
-    --deli-color: #ee6055;
-    --bakery-color: #f4a259;
-    --dry-color: #ffd500;
+    --deli-color: #F99891;
+    --bakery-color: #FFD16D;
+    --dry-color: #FFE564;
 }
 
 body {
@@ -58,6 +58,18 @@ color: #fff;
 border: none;
 border-radius: 4px;
 cursor: pointer;
+}
+
+.editButtonSubmit {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.addButtonSubmit {
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 .filter {
@@ -231,4 +243,76 @@ color: #333;
 }
 
 
+/* *** Popup Styles *** */
+.popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popupContainer {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.popupContainer label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupInput {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.popupSelect {
+    width: 92%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.popupActions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.button.addItem {
+    background-color: #4CAF50;
+    color: white;
+
+    width: 30%;
+}
+
+.button.closeButton {
+    background-color: #f44336;
+    color: white;
+
+    width: 30%;
+}
+
+/* Dim background when popup is active */
+.inventory.dimmed {
+    opacity: 0.5;
+}
 

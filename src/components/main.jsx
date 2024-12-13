@@ -1,10 +1,18 @@
 import '../styles/main.css';
+import React, { useState } from 'react';
 import Add from '../images/add.png';
 import Edit from '../images/edit.png';
 
 function Main() {
+
+    const [showPopup, setShowPopup] = useState(false);
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     return (
-        <div className="inventory">
+        <div className={`inventory ${showPopup ? 'dimmed' : ''}`}>
             {/* Main Page Title */}
             <h1 className="title">Inventory Management System</h1>
 
@@ -30,7 +38,10 @@ function Main() {
                     {/* Add Item */}
                     <div className="headerLeft">
                         <p>ITEM</p>
-                        <img src={Add} alt="Add" className='addImage' />
+                        {/* Add Button */}
+                        <button className='addButtonSubmit' onClick={togglePopup}>
+                            <img src={Add} alt="Add" className='addImage' />
+                        </button>
                     </div>
                     {/* Item Categories */}
                     <div className="headerRight">
@@ -64,87 +75,148 @@ function Main() {
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+
                         <div className="itemSpecifics">
                             <p>10.00</p>
                             <p>10</p>
                             <p>Grocery</p>
                             <p>1</p>
                             <div className="buttonContainer">
-                                <img src={Edit} alt="Edit" className='editButton'/>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
                             </div>
                         </div>
+                        
                         
                     </div>
 
                 </div>
 
             </div>
+
+            {/* Popup Window */}
+            {showPopup && (
+                <div className="popupOverlay">
+                    <div className="popupContainer">
+                        <h2>Add New Item</h2>
+                        <form>
+                            <label>Item Name:
+                                <input type="text" className="popupInput" placeholder="Enter item name" />
+                            </label>
+                            <label>Item Price:
+                                <input type="number" className="popupInput" placeholder="Enter item price" />
+                            </label>
+                            <label>Item Quantity:
+                                <input type="number" className="popupInput" placeholder="Enter item quantity" />
+                            </label>
+                            <label>Item Category:
+                            <select className="popupSelect" id="itemCategory">
+                                <option value="Produce">Produce</option>
+                                <option value="Frozen">Frozen</option>
+                                <option value="Fridge">Fridge</option>
+                                <option value="Dry">Dry</option>
+                                <option value="Deli">Deli</option>
+                                <option value="Bakery">Bakery</option>
+                            </select>
+                            </label>
+                            <div className="popupActions">
+                                <button type="button" className="button closeButton" onClick={togglePopup}>Close</button>
+                                <button type="submit" className="button addItem">Add Item</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
 
         </div>
     );
