@@ -67,128 +67,108 @@ function Main() {
                 {/* Contains the Items and Item Specifics */}
                 <div className="tableContainer">
 
-                    <div className="itemName">
-                        <p>Sausage</p>
-                        <p>Pizza</p>
-                        <p>Doughnut</p>
-                        <p>Sausage</p>
-                        <p>Pizza</p>
-                        <p>Doughnut</p>
-                        <p>Sausage</p>
-                        <p>Pizza</p>
-                        <p>Doughnut</p>
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
+                            <p>10.00</p>
+                            <p>10</p>
+                            <p>PRODUCE</p>
+                            <p>1</p>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="itemSpecificsContainer">
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
+                    </div>
 
-                        <div className="itemSpecifics">
+                    <div className="itemSpecifics">
+                        <div className='itemName'>Sausage</div>
+                        <div className="specificsRight">
                             <p>10.00</p>
                             <p>10</p>
-                            <p>Grocery</p>
+                            <p>PRODUCE</p>
                             <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
+                            <button className='editButtonSubmit'>
+                                <img src={Edit} alt="Edit" className='editButton'/>
+                            </button>
                         </div>
-
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Grocery</p>
-                            <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="itemSpecifics">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>Grocery</p>
-                            <p>1</p>
-                            <div className="buttonContainer">
-                                <button className='editButtonSubmit'>
-                                    <img src={Edit} alt="Edit" className='editButton'/>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        
                     </div>
 
                 </div>
