@@ -1,62 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap');
 
-.login {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-font-family: "Inria Sans", sans-serif;
-background-color: #f9f9f9;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inria Sans", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.title {
-font-size: 35px;
-max-width: 35%;
-font-weight: bold;
-color: #333;
-margin-bottom: 40px;
-text-align: center;
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titleHeading {
+  font-size: 30px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .form {
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .label {
-font-size: 14px;
-font-weight: bold;
-color: #333;
-margin-bottom: 5px;
-align-self: flex-start;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .input {
-width: 100%;
-padding: 10px;
-margin-bottom: 20px;
-border: 1px solid #ccc;
-border-radius: 5px;
-font-size: 14px;
+  min-width: 90%;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.input::placeholder {
+  color: #aaa;
 }
 
 .button {
-width: 100%;
-padding: 10px;
-font-size: 16px;
-font-weight: bold;
-color: #838383;
-background-color: #f9f9f9;
-border: 1px solid #ccc;
-border-radius: 5px;
-cursor: pointer;
-transition: ease 0.5s;
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .button:hover {
-color: #333;
-border-color: #333;
+  background-color: #45a049;
 }

@@ -3,7 +3,7 @@ import '../styles/login.css';
 function Login() {
     return (
         <div className="login">
-          <h1 className="title">INVENTORY MANAGEMENT SYSTEM</h1>
+          <p className="titleHeading">INVENTORY MANAGEMENT SYSTEM</p>
           <div className="form">
             <label className="label" htmlFor="username">
               USERNAME
