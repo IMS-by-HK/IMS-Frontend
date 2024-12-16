@@ -15,7 +15,7 @@ font-family: 'Inria Sans', sans-serif;
 
 /* *** Inventory Container *** */
 .inventory {
-    width: 90%;
+    width: 100%;
     max-width: 1600px; 
     margin: 0 auto;
     padding: 20px;
@@ -35,20 +35,21 @@ font-family: 'Inria Sans', sans-serif;
 /* Search Bar */
 .search {
     display: flex;
+    width: 60%;
     max-height: 60px;
-    width: 1150px;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
 
 .input {
-    width: 70%;
+    max-width: 500px;
     padding: 15px;
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin: 0;
+    margin-right: 50px;
 }
 
 .button {
@@ -79,6 +80,7 @@ font-family: 'Inria Sans', sans-serif;
     font-weight: 600;
     font-size: 18px;
     padding: 15px;
+    margin: 0;
 
     text-align: center;
 
@@ -97,7 +99,7 @@ font-family: 'Inria Sans', sans-serif;
 
 .mainContainer {
     /* background-color: lightgreen; */
-    width: 100%;
+    width: 1200px;
     padding: 25px;
     margin-top: 50px;
     border: 1px solid #747474;
@@ -125,7 +127,7 @@ font-family: 'Inria Sans', sans-serif;
     font-size: 18px; 
     font-weight: 700;
 
-    border: solid 1px #747474;
+    border: solid 1px #ccc;
     border-radius: 10px;
 }
 
@@ -142,9 +144,9 @@ font-family: 'Inria Sans', sans-serif;
 }
 
 .headerRight {
-    width: 50%;
+    width: 58%;
     
-    padding-left: 15px;
+    padding-left: 35px;
 
     display: flex;
     text-align: center;
@@ -156,11 +158,10 @@ font-family: 'Inria Sans', sans-serif;
     font-size: 18px;
     width: 15%;
     margin-left: 14px;
-    margin-right: 14px;
 
-    -webkit-box-shadow: 0px 0px 0px 1px #747474;
-    -moz-box-shadow: 0px 0px 0px 1px #747474;
-    box-shadow: 0px 0px 0px 1px #747474;
+    -webkit-box-shadow: 0px 0px 0px 1px #ccc;
+    -moz-box-shadow: 0px 0px 0px 1px #ccc;
+    box-shadow: 0px 0px 0px 1px #ccc;
 
     border-radius: 10px;
 }
@@ -176,7 +177,7 @@ font-family: 'Inria Sans', sans-serif;
 /* Item Specifics */
 
 .itemSpecifics {
-    width: 100%;
+    width: 1100px;
     display: flex;
     align-items: center; 
     font-weight: 700;
@@ -195,9 +196,9 @@ font-family: 'Inria Sans', sans-serif;
     padding: 0;
     padding-left: 15px;
 
-    border-left: 1px solid #747474;
-    border-top: 1px solid #747474;
-    border-bottom: 1px solid #747474;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
@@ -222,8 +223,8 @@ font-family: 'Inria Sans', sans-serif;
     text-align: center;
     line-height: 65px;
 
-    border-top: 1px solid #747474;
-    border-bottom: 1px solid #747474;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .specificsRight p:nth-child(3) {
@@ -240,9 +241,9 @@ font-family: 'Inria Sans', sans-serif;
     height: 67px;
     width: 60px;
 
-    border-right: 1px solid #747474;
-    border-top: 1px solid #747474;
-    border-bottom: 1px solid #747474;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
