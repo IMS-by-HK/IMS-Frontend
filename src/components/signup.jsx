@@ -22,13 +22,12 @@ function Signup() {
   const handleSubmit = async (e) => {
     console.log('Form submission started');
     e.preventDefault();
-    e.stopPropagation();
     console.log('Form submission prevented default');
 
     try {
       // Correct the endpoint to match backend route
       const response = await axios.post('/signup', formData);
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log('Navigating to main page');
         navigate('/');
       }
