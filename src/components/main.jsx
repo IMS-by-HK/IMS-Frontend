@@ -9,28 +9,62 @@ function Main() {
     const [showPopup, setShowPopup] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
+    const [formData, setFormData] = useState({
+        name: "",
+        price: "",
+        quantity: "",
+        category: "",
+    });
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
 
-    useEffect(() => {
-        // Fetch items from the backend
-        const fetchItems = async () => {
-            setIsLoading(true);
-            try {
-                const response = await axios.get(
-                    "https://ims-backend-2qfp.onrender.com/products/all"
-                ); // Endpoint for fetching items
-                console.log("Response data:", response.data);
-                setItems(response.data);
-                console.log(response.data); // Get all items
-            } catch (error) {
-                console.error("Error fetching items:", error);
-            } finally {
-                setIsLoading(false);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                "https://ims-backend-2qfp.onrender.com/products/create",
+                formData
+            );
+    
+            if (response.status === 201 || 200) {
+                console.log("Item successfully added!");
+                togglePopup(); // Close the popup after success
+                setFormData({ name: "", price: "", quantity: "", category: "" }); // Clear form fields
+                fetchItems(); // Refresh the items list
+            } else {
+                console.error("Failed to add item. Response status:", response.status);
             }
-        };
+        } catch (error) {
+            console.error("Error adding item:", error);
+        }
+    };
+
+    const fetchItems = async () => {
+        setIsLoading(true);
+        try {
+            const response = await axios.get(
+                "https://ims-backend-2qfp.onrender.com/products/all"
+            );
+            console.log("Response data:", response.data);
+            setItems(response.data);
+        } catch (error) {
+            console.error("Error fetching items:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchItems();
     }, []);
 
@@ -116,13 +150,17 @@ function Main() {
                 <div className="popupOverlay">
                     <div className="popupContainer">
                         <h2>Add New Item</h2>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <label>
                                 Item Name:
                                 <input
                                     type="text"
                                     className="popupInput"
                                     placeholder="Enter item name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                 />
                             </label>
                             <label>
@@ -131,6 +169,10 @@ function Main() {
                                     type="number"
                                     className="popupInput"
                                     placeholder="Enter item price"
+                                    name="price"
+                                    value={formData.price}
+                                    onChange={handleChange}
+                                    required
                                 />
                             </label>
                             <label>
@@ -139,11 +181,25 @@ function Main() {
                                     type="number"
                                     className="popupInput"
                                     placeholder="Enter item quantity"
+                                    name="quantity"
+                                    value={formData.quantity}
+                                    onChange={handleChange}
+                                    required
                                 />
                             </label>
                             <label>
                                 Item Category:
-                                <select className="popupSelect" id="itemCategory">
+                                <select
+                                    className="popupSelect"
+                                    id="itemCategory"
+                                    name="category"
+                                    value={formData.category}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="" disabled>
+                                        Select Category
+                                    </option>
                                     <option value="Produce">Produce</option>
                                     <option value="Frozen">Frozen</option>
                                     <option value="Fridge">Fridge</option>
