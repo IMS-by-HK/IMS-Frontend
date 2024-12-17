@@ -18,6 +18,7 @@ function Main() {
         const fetchItems = async () => {
           try {
             const response = await axios.get('/products/all'); // Endpoint for fetching items
+            console.log('Response data:', response.data);
             setItems(response.data);
             console.log(response.data); // Get all items
           } catch (error) {
