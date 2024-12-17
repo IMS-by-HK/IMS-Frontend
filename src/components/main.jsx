@@ -17,7 +17,7 @@ function Main() {
         // Fetch items from the backend
         const fetchItems = async () => {
           try {
-            const response = await axios.get('/products/all'); // Endpoint for fetching items
+            const response = await axios.get('https://ims-backend-2qfp.onrender.com/products/all'); // Endpoint for fetching items
             console.log('Response data:', response.data);
             setItems(response.data);
             console.log(response.data); // Get all items
