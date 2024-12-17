@@ -1,15 +1,32 @@
 import '../styles/main.css';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Add from '../images/add.png';
 import Edit from '../images/edit.png';
 
 function Main() {
 
     const [showPopup, setShowPopup] = useState(false);
+    const [items, setItems] = useState([]);
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
+
+    useEffect(() => {
+        // Fetch items from the backend
+        const fetchItems = async () => {
+          try {
+            const response = await axios.get('/products/all'); // Endpoint for fetching items
+            setItems(response.data);
+            console.log(response.data); // Get all items
+          } catch (error) {
+            console.error('Error fetching items:', error);
+          }
+        };
+        fetchItems();
+      }, []);
+    
 
     return (
         <div className={`inventory ${showPopup ? 'dimmed' : ''}`}>
@@ -66,110 +83,21 @@ function Main() {
 
                 {/* Contains the Items and Item Specifics */}
                 <div className="tableContainer">
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
+                    {/* Map through items to display each */}
+                    {items.map((item) => (
+                        <div key={item._id} className="itemSpecifics">
+                            <div className='itemName'>{item.name}</div>
+                            <div className="specificsRight">
+                                <p className='itemPrice'>${item.price.toFixed(2)}</p>
+                                <p className='itemQuantity'>{item.quantity}</p>
+                                <p className='itemCategory'>{item.category}</p>
+                                <p className='itemId'>{item.productId}</p>
+                                <button className='editButtonSubmit'>
+                                    <img src={Edit} alt="Edit" className='editButton'/>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="itemSpecifics">
-                        <div className='itemName'>Sausage</div>
-                        <div className="specificsRight">
-                            <p>10.00</p>
-                            <p>10</p>
-                            <p>PRODUCE</p>
-                            <p>1</p>
-                            <button className='editButtonSubmit'>
-                                <img src={Edit} alt="Edit" className='editButton'/>
-                            </button>
-                        </div>
-                    </div>
+                    ))}
 
                 </div>
 
