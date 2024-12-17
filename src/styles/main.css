@@ -253,6 +253,18 @@ font-family: 'Inria Sans', sans-serif;
     cursor: pointer;
 }
 
+/* *** Loading Icon *** */
+.loading-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust as needed */
+}
+
+.loading-icon {
+    width: 50px; /* Adjust size */
+    height: 50px;
+}
 
 /* *** Popup Styles *** */
 .popupOverlay {
