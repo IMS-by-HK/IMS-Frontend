@@ -49,7 +49,7 @@ function Login() {
           onChange={handleChange} 
           placeholder="ADMIN" 
         />
-        <button className="button" type="submit">LOGIN</button>
+        <button className="buttonLogin" type="submit">LOGIN</button>
       </form>
     </div>
   );
