@@ -9,9 +9,10 @@ function Login() {
     username: '',
     password: '',
   });
+
   const [error, setError] = useState(''); // State for error messages
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setToken } = useAuth(); // We'll update AuthContext to include setToken
 
   const handleChange = (e) => {
     setFormData({
@@ -26,7 +27,10 @@ function Login() {
     try {
       const response = await axios.post('https://ims-backend-2qfp.onrender.com/login', formData);
       if (response.status === 200 || response.status === 201) {
-        login();
+        // Assuming the token is returned in the response data with a key 'token'
+        const token = response.data.jwt; 
+        login(); // This will still set isAuthenticated to true
+        setToken(token); // Store token in the context which will also save it to localStorage
         navigate('/');
         console.log("Logged in.");
       }

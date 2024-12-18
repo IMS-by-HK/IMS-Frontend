@@ -4,14 +4,18 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    // Check localStorage for authentication status on initial render
     return localStorage.getItem('isAuthenticated') === 'true';
   });
 
+  // Add state for token
+  const [token, setTokenState] = useState(() => {
+    return localStorage.getItem('token') || '';
+  });
+
   useEffect(() => {
-    // Update localStorage whenever the authentication state changes
     localStorage.setItem('isAuthenticated', isAuthenticated);
-  }, [isAuthenticated]);
+    localStorage.setItem('token', token);
+  }, [isAuthenticated, token]);
 
   const login = () => {
     setIsAuthenticated(true);
@@ -19,15 +23,29 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated'); // Remove the item to clear authentication
+    localStorage.removeItem('isAuthenticated');
+    setTokenState(''); // Clear the token
   };
 
   const signup = () => {
-    setIsAuthenticated(true); // Set authenticated to true upon sign-up
+    setIsAuthenticated(true);
+  };
+
+  // Function to set token which updates state and localStorage
+  const setToken = (newToken) => {
+    setTokenState(newToken);
+    localStorage.setItem('token', newToken); // Directly set to localStorage for immediate effect
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, signup }}>
+    <AuthContext.Provider value={{
+      isAuthenticated,
+      login,
+      logout,
+      signup,
+      token,
+      setToken
+    }}>
       {children}
     </AuthContext.Provider>
   );

@@ -258,11 +258,11 @@ font-family: 'Inria Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* Adjust as needed */
+    height: 200px;
 }
 
 .loading-icon {
-    width: 50px; /* Adjust size */
+    width: 50px;
     height: 50px;
 }
 
@@ -296,7 +296,7 @@ font-family: 'Inria Sans', sans-serif;
     align-items: center;
 }
 
-.popupInput {
+.popupInput, .popupSelect {
     width: 90%;
     padding: 10px;
     margin: 10px 0;
@@ -305,33 +305,59 @@ font-family: 'Inria Sans', sans-serif;
     font-size: 16px;
 }
 
-.popupSelect {
-    width: 92%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
+/* Updated popup actions for centered and equal sized buttons */
 .popupActions {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 20px;
+}
+
+.popupActions button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.button.addItem, 
+.button.closeButton, 
+.button.deleteButton {
+    width: auto;
+    min-width: 100px;
 }
 
 .button.addItem {
     background-color: #4CAF50;
     color: white;
-
-    width: 30%;
 }
 
 .button.closeButton {
     background-color: #f44336;
     color: white;
+}
 
-    width: 30%;
+/* Delete Button Styling */
+.button.deleteButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.deleteButton:hover {
+    background-color: #d32f2f;
+}
+
+.deleteIcon {
+    height: 22px;
+    transition: 0.3s ease;
+}
+
+.deleteIcon:hover {
+    transform: scale(125%);
+    cursor: pointer;
 }
 
 /* Dim background when popup is active */
