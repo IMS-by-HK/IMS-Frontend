@@ -19,6 +19,7 @@ function Main() {
         category: "",
     });
     const [searchTerm, setSearchTerm] = useState('');
+    const [filterOption, setFilterOption] = useState('FILTER');
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -36,9 +37,32 @@ function Main() {
         setSearchTerm(e.target.value.toLowerCase());
     };
 
-    const filteredItems = items.filter(item => 
-        item.name.toLowerCase().includes(searchTerm)
-    );
+    const handleFilterChange = (e) => {
+        setFilterOption(e.target.value);
+    };
+
+    const filteredItems = items.filter(item => {
+        if (searchTerm && filterOption !== 'FILTER') {
+            switch(filterOption) {
+                case 'Price':
+                    return item.price.toString().includes(searchTerm);
+                case 'Quantity':
+                    return item.quantity.toString().includes(searchTerm);
+                case 'Category':
+                    return item.category.toLowerCase().includes(searchTerm);
+                case 'Id':
+                    return item.productId.toString().includes(searchTerm);
+                case 'Name':
+                    return item.name.toLowerCase().includes(searchTerm);
+                default:
+                    return true;
+            }
+        } else if (searchTerm) {
+            return item.name.toLowerCase().includes(searchTerm);
+        } else {
+            return true;
+        }
+    });
 
     const handleEditClick = (item) => {
         setFormData({
@@ -154,11 +178,11 @@ function Main() {
                 <input
                     type="text"
                     className="input"
-                    placeholder="Search product name..."
+                    placeholder="Search..."
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
-                <select className="button filter" id="filterOptions">
+                <select className="button filter" id="filterOptions" value={filterOption} onChange={handleFilterChange}>
                     <option value="FILTER">FILTER</option>
                     <option value="Price">PRICE</option>
                     <option value="Quantity">QUANTITY</option>

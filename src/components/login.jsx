@@ -22,6 +22,11 @@ function Login() {
     setError(''); // Clear any previous errors when user starts typing
   };
 
+  const handleSignUpClick = () => {
+    navigate("/signup"); // Replace "/signup" with the desired route
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -73,6 +78,7 @@ function Login() {
           placeholder="ADMIN" 
         />
         <button className="buttonLogin" type="submit">LOGIN</button>
+        <button className="button" type="submit" onClick={handleSignUpClick}>SIGN-UP</button>
       </form>
     </div>
   );
