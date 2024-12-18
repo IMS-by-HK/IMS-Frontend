@@ -10,6 +10,7 @@ function Main() {
     const [showPopup, setShowPopup] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
+    const [displayedItems, setDisplayedItems] = useState([]);
     const [editingItem, setEditingItem] = useState(null);
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [formData, setFormData] = useState({
@@ -41,28 +42,39 @@ function Main() {
         setFilterOption(e.target.value);
     };
 
-    const filteredItems = items.filter(item => {
-        if (searchTerm && filterOption !== 'FILTER') {
-            switch(filterOption) {
-                case 'Price':
-                    return item.price.toString().includes(searchTerm);
-                case 'Quantity':
-                    return item.quantity.toString().includes(searchTerm);
-                case 'Category':
-                    return item.category.toLowerCase().includes(searchTerm);
-                case 'Id':
-                    return item.productId.toString().includes(searchTerm);
-                case 'Name':
-                    return item.name.toLowerCase().includes(searchTerm);
-                default:
-                    return true;
-            }
-        } else if (searchTerm) {
-            return item.name.toLowerCase().includes(searchTerm);
-        } else {
-            return true;
+    useEffect(() => {
+        const filtered = items.filter((item) => {
+            const matchesSearchTerm = searchTerm
+                ? [item.name, item.price, item.quantity, item.category, item.productId]
+                      .map((field) => field.toString().toLowerCase())
+                      .some((field) => field.includes(searchTerm))
+                : true;
+            
+            return matchesSearchTerm;
+        });
+
+        let sortedItems = filtered;
+        
+        // Sort based on selected filter option
+        if (filterOption !== 'FILTER') {
+            sortedItems = filtered.sort((a, b) => {
+                if (filterOption === "Price") {
+                    return a.price - b.price;
+                } else if (filterOption === "Quantity") {
+                    return a.quantity - b.quantity;
+                } else if (filterOption === "Category") {
+                    return a.category.localeCompare(b.category);
+                } else if (filterOption === "Id") {
+                    return a.productId - b.productId;
+                } else if (filterOption === "Name") {
+                    return a.name.localeCompare(b.name);
+                }
+                return 0; // Default case if the filter is not recognized
+            });
         }
-    });
+
+        setDisplayedItems(sortedItems);
+    }, [searchTerm, items, filterOption]);
 
     const handleEditClick = (item) => {
         setFormData({
@@ -84,12 +96,9 @@ function Main() {
             );
     
             if (response.status === 201 || response.status === 200) {
-                console.log("Item successfully added!");
                 togglePopup();
                 setFormData({ name: "", price: "", quantity: "", category: "" });
                 fetchItems();
-            } else {
-                console.error("Failed to add item. Response status:", response.status);
             }
         } catch (error) {
             console.error("Error adding item:", error);
@@ -105,13 +114,10 @@ function Main() {
             );
 
             if (response.status === 201 || response.status === 200) {
-                console.log("Item successfully updated!");
                 setShowEditPopup(false);
                 setEditingItem(null);
                 setFormData({ name: "", price: "", quantity: "", category: "" });
                 fetchItems();
-            } else {
-                console.error("Failed to update item. Response status:", response.status);
             }
         } catch (error) {
             console.error("Error updating item:", error);
@@ -133,22 +139,13 @@ function Main() {
             );
     
             if (response.status === 204 || response.status === 200) {
-                console.log("Item successfully deleted!");
                 setShowEditPopup(false);
                 setEditingItem(null);
                 setFormData({ name: "", price: "", quantity: "", category: "" });
                 fetchItems();
-            } else {
-                console.error("Unexpected response status when deleting item:", response.status);
             }
         } catch (error) {
-            if (error.response) {
-                console.error("Error deleting item - Server responded with:", error.response.status, error.response.data);
-            } else if (error.request) {
-                console.error("Error deleting item - No server response:", error.request);
-            } else {
-                console.error("Error deleting item - Request setup failed:", error.message);
-            }
+            console.error("Error deleting item:", error);
         }
     };
 
@@ -159,6 +156,7 @@ function Main() {
                 "https://ims-backend-2qfp.onrender.com/products/all"
             );
             setItems(response.data);
+            setDisplayedItems(response.data);
         } catch (error) {
             console.error("Error fetching items:", error);
         } finally {
@@ -182,7 +180,7 @@ function Main() {
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
-                <select className="button filter" id="filterOptions" value={filterOption} onChange={handleFilterChange}>
+                <select className="button filter" id="filterOptions" onChange={handleFilterChange} value={filterOption}>
                     <option value="FILTER">FILTER</option>
                     <option value="Price">PRICE</option>
                     <option value="Quantity">QUANTITY</option>
@@ -214,7 +212,7 @@ function Main() {
                             <img src={LoadingIcon} alt="Loading..." className="loading-icon" />
                         </div>
                     ) : (
-                        filteredItems.map((item) => (
+                        displayedItems.map((item) => (
                             <div key={item._id} className="itemSpecifics">
                                 <div className="itemName">{item.name}</div>
                                 <div className="specificsRight">
