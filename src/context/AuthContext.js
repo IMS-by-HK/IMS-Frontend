@@ -7,6 +7,10 @@ export const AuthProvider = ({ children }) => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
 
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isAuthenticated') === 'true';
+  });
+
   // Add state for token
   const [token, setTokenState] = useState(() => {
     return localStorage.getItem('token') || '';
@@ -19,6 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => {
     setIsAuthenticated(true);
+    setIsLoggedIn(true);
   };
 
   const logout = () => {
@@ -40,6 +45,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       isAuthenticated,
+      isLoggedIn,
       login,
       logout,
       signup,

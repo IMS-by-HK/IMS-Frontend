@@ -39,7 +39,9 @@ function AppContent() {
         path="/" 
         element={
           <ProtectedRoute>
-            <Main />
+            <AuthProvider>
+              <Main />
+            </AuthProvider>
           </ProtectedRoute>
         } 
       />

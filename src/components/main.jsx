@@ -1,6 +1,7 @@
 import "../styles/main.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext"; // Adjust the path as needed
 import Add from "../images/add.png";
 import Edit from "../images/edit.png";
 import LoadingIcon from "../images/loading-icon.gif";
@@ -21,6 +22,8 @@ function Main() {
     });
     const [searchTerm, setSearchTerm] = useState('');
     const [filterOption, setFilterOption] = useState('FILTER');
+    
+    const { isLoggedIn, logout } = useAuth();
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -126,13 +129,15 @@ function Main() {
 
     const handleDelete = async () => {
         try {
-            const token = localStorage.getItem('token') || 'your-static-token-if-not-using-auth';
+            const token = localStorage.getItem('token');
+            console.log(token);
+            console.log(`${editingItem._id}`);
             
             const response = await axios.delete(
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
                 {
                     headers: {
-                        'Authorization': `Bearer ${token}`,
+                        'jwt': `${token}`,
                         'Content-Type': 'application/json',
                     }
                 }
@@ -168,8 +173,22 @@ function Main() {
         fetchItems();
     }, []);
 
+    const handleLogout = () => {
+        console.log("Logging out...")
+        logout();
+        window.location.reload();
+        console.log("Logged out")
+    };
+
     return (
         <div className={`inventory ${showPopup || showEditPopup ? "dimmed" : ""}`}>
+            <div className="logout-container">
+                {isLoggedIn && (
+                    <button onClick={handleLogout} className="logout-button">
+                        Log Out
+                    </button>
+                )}
+            </div>
             <h1 className="title">Inventory Management System</h1>
 
             <div className="search">
