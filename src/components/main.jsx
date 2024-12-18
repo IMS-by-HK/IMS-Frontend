@@ -18,6 +18,7 @@ function Main() {
         quantity: "",
         category: "",
     });
+    const [searchTerm, setSearchTerm] = useState('');
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -31,7 +32,14 @@ function Main() {
         }));
     };
 
-    // Handle edit click for edit item button
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value.toLowerCase());
+    };
+
+    const filteredItems = items.filter(item => 
+        item.name.toLowerCase().includes(searchTerm)
+    );
+
     const handleEditClick = (item) => {
         setFormData({
             name: item.name,
@@ -53,9 +61,9 @@ function Main() {
     
             if (response.status === 201 || response.status === 200) {
                 console.log("Item successfully added!");
-                togglePopup(); // Close the popup after success
-                setFormData({ name: "", price: "", quantity: "", category: "" }); // Clear form fields
-                fetchItems(); // Refresh the items list
+                togglePopup();
+                setFormData({ name: "", price: "", quantity: "", category: "" });
+                fetchItems();
             } else {
                 console.error("Failed to add item. Response status:", response.status);
             }
@@ -67,7 +75,6 @@ function Main() {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("Trying to fetch edit item");
             const response = await axios.patch(
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
                 formData
@@ -75,10 +82,10 @@ function Main() {
 
             if (response.status === 201 || response.status === 200) {
                 console.log("Item successfully updated!");
-                setShowEditPopup(false); // Close the popup after success
+                setShowEditPopup(false);
                 setEditingItem(null);
-                setFormData({ name: "", price: "", quantity: "", category: "" }); // Clear form fields
-                fetchItems(); // Refresh the items list
+                setFormData({ name: "", price: "", quantity: "", category: "" });
+                fetchItems();
             } else {
                 console.error("Failed to update item. Response status:", response.status);
             }
@@ -89,8 +96,6 @@ function Main() {
 
     const handleDelete = async () => {
         try {
-            console.log("Trying to delete item with ID:", editingItem._id);
-
             const token = localStorage.getItem('token') || 'your-static-token-if-not-using-auth';
             
             const response = await axios.delete(
@@ -123,14 +128,12 @@ function Main() {
         }
     };
 
-
     const fetchItems = async () => {
         setIsLoading(true);
         try {
             const response = await axios.get(
                 "https://ims-backend-2qfp.onrender.com/products/all"
             );
-            console.log("Response data:", response.data);
             setItems(response.data);
         } catch (error) {
             console.error("Error fetching items:", error);
@@ -145,18 +148,16 @@ function Main() {
 
     return (
         <div className={`inventory ${showPopup || showEditPopup ? "dimmed" : ""}`}>
-            {/* Main Page Title */}
             <h1 className="title">Inventory Management System</h1>
 
-            {/* Container for Input and Filter Button */}
             <div className="search">
-                {/* Input Field */}
                 <input
                     type="text"
                     className="input"
                     placeholder="Search product name..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                 />
-                {/* Filter Button */}
                 <select className="button filter" id="filterOptions">
                     <option value="FILTER">FILTER</option>
                     <option value="Price">PRICE</option>
@@ -167,9 +168,7 @@ function Main() {
                 </select>
             </div>
 
-            {/* Main Container for Table */}
             <div className="mainContainer">
-                {/* Header Container */}
                 <div className="headerContainer">
                     <div className="headerLeft">
                         <p>ITEM</p>
@@ -185,14 +184,13 @@ function Main() {
                     </div>
                 </div>
 
-                {/* Items List */}
                 <div className="tableContainer">
                     {isLoading ? (
                         <div className="loading-icon-container">
                             <img src={LoadingIcon} alt="Loading..." className="loading-icon" />
                         </div>
                     ) : (
-                        items.map((item) => (
+                        filteredItems.map((item) => (
                             <div key={item._id} className="itemSpecifics">
                                 <div className="itemName">{item.name}</div>
                                 <div className="specificsRight">
@@ -210,7 +208,6 @@ function Main() {
                 </div>
             </div>
 
-            {/* Popup Window for Adding */}
             {showPopup && (
                 <div className="popupOverlay">
                     <div className="popupContainer">
@@ -286,7 +283,6 @@ function Main() {
                 </div>
             )}
 
-            {/* Popup Window for Editing */}
             {showEditPopup && (
                 <div className="popupOverlay">
                     <div className="popupContainer">
