@@ -80,7 +80,7 @@ function Login() {
           placeholder="ADMIN" 
         />
         <button className="buttonLogin" type="submit">LOGIN</button>
-        <button className="button" type="submit" onClick={handleSignUpClick}>SIGN-UP</button>
+        <button className="button">SIGN-UP</button>
       </form>
     </div>
   );
