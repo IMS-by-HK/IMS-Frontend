@@ -33,6 +33,7 @@ function Login() {
       const response = await axios.post('https://ims-backend-2qfp.onrender.com/login', formData);
       if (response.status === 200 || response.status === 201) {
         // Assuming the token is returned in the response data with a key 'token'
+        console.log(response.data.jwt);
         const token = response.data.jwt; 
         login(); // This will still set isAuthenticated to true
         setToken(token); // Store token in the context which will also save it to localStorage

@@ -1,4 +1,5 @@
 import "../styles/main.css";
+import "../styles/mainMobile.css";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext"; // Adjust the path as needed
@@ -111,11 +112,19 @@ function Main() {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {
+            const token = localStorage.getItem('token');
+            console.log(token);
             const response = await axios.patch(
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
-                formData
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
             );
-
+    
             if (response.status === 201 || response.status === 200) {
                 setShowEditPopup(false);
                 setEditingItem(null);
@@ -137,13 +146,13 @@ function Main() {
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
                 {
                     headers: {
-                        'jwt': `${token}`,
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     }
                 }
             );
     
-            if (response.status === 204 || response.status === 200) {
+            if (response.status === 201 || response.status === 200 || response.status === 204) {
                 setShowEditPopup(false);
                 setEditingItem(null);
                 setFormData({ name: "", price: "", quantity: "", category: "" });
@@ -233,7 +242,9 @@ function Main() {
                     ) : (
                         displayedItems.map((item) => (
                             <div key={item._id} className="itemSpecifics">
-                                <div className="itemName">{item.name}</div>
+                                <div className="itemName">
+                                    <p>{item.name}</p>
+                                </div>
                                 <div className="specificsRight">
                                     <p className="itemPrice">${item.price.toFixed(2)}</p>
                                     <p className="itemQuantity">{item.quantity}</p>
