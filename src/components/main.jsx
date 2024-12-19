@@ -1,6 +1,6 @@
 import "../styles/main.css";
 import "../styles/mainMobile.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext"; // Adjust the path as needed
 import Add from "../images/add.png";
