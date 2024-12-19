@@ -120,7 +120,7 @@ function Main() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
+                        "jwt": `${token}`,
                     }
                 }
             );
@@ -146,7 +146,7 @@ function Main() {
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
                 {
                     headers: {
-                        'Authorization': `Bearer ${token}`,
+                        "jwt": `${token}`,
                         'Content-Type': 'application/json',
                     }
                 }

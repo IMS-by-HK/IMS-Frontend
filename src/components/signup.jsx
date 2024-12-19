@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
 import axios from 'axios';
 import "../styles/signup.css";
+import "../styles/signupMobile.css";
 
 function Signup() {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ function Signup() {
       [e.target.id]: e.target.value,
     });
     setError(''); // Clear any previous errors when user starts typing
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login"); // Replace "/signup" with the desired route
   };
 
   const handleSubmit = async (e) => {
@@ -85,6 +90,7 @@ function Signup() {
           placeholder="ADMIN"
         />
         <button className="button" type="submit">SIGN-UP</button>
+        <button className="button" type="submit" onClick={handleLoginClick}>LOG-IN</button>
       </form>
     </div>
   );

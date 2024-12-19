@@ -1,0 +1,83 @@
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  #root {
+    width: 90%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inria Sans", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    max-width: 90%;
+    /* max-width: 350px; */
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .titleHeading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .buttonLogin, .button {
+    padding: 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #45a049;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .buttonLogin:hover, .button:hover {
+    background-color: #0056b3;
+  }
+
+  .errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
