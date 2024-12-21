@@ -22,7 +22,7 @@ function AppContent() {
   useEffect(() => {
     // Redirect to main page if authenticated when app starts
     if (isAuthenticated) {
-      navigate('/'); // Assuming '/' is your main page
+      navigate('/');
     }
   }, [isAuthenticated, navigate]);
 

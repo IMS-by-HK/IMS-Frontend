@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
-import Main from '../components/main.jsx'; // Adjust the import path as necessary
-import { AuthProvider } from '../context/AuthContext.js'; // Adjust the path
+import Main from '../components/main.jsx';
+import { AuthProvider } from '../context/AuthContext.js';
 
 jest.mock('axios', () => ({
     get: jest.fn(),

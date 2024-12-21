@@ -30,3 +30,17 @@ Once everything is installed, **make sure** to:
 
 - Add ```"proxy": "http://localhost:3000"``` to the package.json file. Make sure the port you are using is correct.
 - Create a .env file in the root of the folder and add ```REACT_APP_API_URL=https://ims-backend-2qfp.onrender.com``` for the back-end/server to work.
+
+### Testing:
+
+[Test Image 1](docs/Front-End-Testing-1.png)
+[Test Image 2](docs/Front-End-Testing-2.png)
+[Test Image 3](docs/Front-End-Testing-3.png)
+
+### Pages:
+
+[Main Page](docs/page1.png)
+[Main Page - Edit Item](docs/page2.png)
+[Main Page - Add Item](docs/page3.png)
+[Login Page](docs/page4.png)
+[Sign-Up Page](docs/page5.png)

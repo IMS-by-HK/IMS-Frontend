@@ -2,7 +2,7 @@ import "../styles/main.css";
 import "../styles/mainMobile.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext"; // Adjust the path as needed
+import { useAuth } from "../context/AuthContext";
 import Add from "../images/add.png";
 import Edit from "../images/edit.png";
 import LoadingIcon from "../images/loading-icon.gif";
@@ -59,7 +59,7 @@ function Main() {
 
         let sortedItems = filtered;
         
-        // Sort based on selected filter option
+
         if (filterOption !== 'FILTER') {
             sortedItems = filtered.sort((a, b) => {
                 if (filterOption === "Price") {
@@ -73,7 +73,7 @@ function Main() {
                 } else if (filterOption === "Name") {
                     return a.name.localeCompare(b.name);
                 }
-                return 0; // Default case if the filter is not recognized
+                return 0;
             });
         }
 

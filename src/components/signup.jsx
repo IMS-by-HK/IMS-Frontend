@@ -21,11 +21,11 @@ function Signup() {
       ...formData,
       [e.target.id]: e.target.value,
     });
-    setError(''); // Clear any previous errors when user starts typing
+    setError('');
   };
 
   const handleLoginClick = () => {
-    navigate("/login"); // Replace "/signup" with the desired route
+    navigate("/login");
   };
 
   const handleSubmit = async (e) => {
@@ -33,21 +33,19 @@ function Signup() {
     e.preventDefault();
     console.log('Form submission prevented default');
 
-     // Validate password length
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters long.");
-      return; // Stop the submission process
+      return;
     }
 
     try {
-      // Correct the endpoint to match backend route
       console.log("Trying...");
       const response = await axios.post('https://ims-backend-2qfp.onrender.com/users/signup', formData);
       console.log(formData);
       if (response.status === 200 || response.status === 201) {
         const token = response.data.jwt; 
-        signup(); // Call the signup function to set isAuthenticated to true
-        setToken(token); // Store token in the context which will also save it to localStorage
+        signup();
+        setToken(token);
         navigate('/');
         console.log('Signup successful, navigating to main page');
       }
@@ -56,7 +54,6 @@ function Signup() {
       let errorMessage = 'An error occurred during sign-up.';
       
       if (error.request) {
-        // Handle specific error messages from the backend
         errorMessage = "Sign-up failed. Please wait a moment and choose a different username.";
       } else {
         errorMessage = error.message;
@@ -68,7 +65,7 @@ function Signup() {
   return (
     <div className="login">
       <p className="titleHeading">INVENTORY MANAGEMENT SYSTEM</p>
-      {error && <p className="errorMessage">{error}</p>}  {/* Display error message */}
+      {error && <p className="errorMessage">{error}</p>}
       <form onSubmit={handleSubmit} className="form">
         <label className="label" htmlFor="username">
           CHOOSE USERNAME
