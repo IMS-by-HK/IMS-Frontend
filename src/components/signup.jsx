@@ -11,8 +11,10 @@ function Signup() {
     username: '',
     password: '',
   });
-  const [error, setError] = useState(''); // State for error messages
-  const { signup } = useAuth(); // Import the signup function from AuthContext
+  const [error, setError] = useState('');
+  const { signup, setToken } = useAuth(); 
+
+
 
   const handleChange = (e) => {
     setFormData({
@@ -31,35 +33,34 @@ function Signup() {
     e.preventDefault();
     console.log('Form submission prevented default');
 
+     // Validate password length
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return; // Stop the submission process
+    }
+
     try {
       // Correct the endpoint to match backend route
       console.log("Trying...");
       const response = await axios.post('https://ims-backend-2qfp.onrender.com/users/signup', formData);
       console.log(formData);
       if (response.status === 200 || response.status === 201) {
-        console.log('Signup successful, navigating to main page');
+        const token = response.data.jwt; 
         signup(); // Call the signup function to set isAuthenticated to true
+        setToken(token); // Store token in the context which will also save it to localStorage
         navigate('/');
+        console.log('Signup successful, navigating to main page');
       }
     } catch (error) {
       console.error('Error signing up:', error);
       let errorMessage = 'An error occurred during sign-up.';
       
-      if (error.response) {
+      if (error.request) {
         // Handle specific error messages from the backend
-        if (error.response.data.message === "Username already exists") {
-          errorMessage = "This username is already taken.";
-        } else if (error.response.data.message === "Password too weak") {
-          errorMessage = "Please choose a stronger password.";
-        } else {
-          errorMessage = error.response.data.message || "Sign-up failed.";
-        }
-      } else if (error.request) {
-        errorMessage = "No response from server";
+        errorMessage = "Sign-up failed. Please wait a moment and choose a different username.";
       } else {
         errorMessage = error.message;
       }
-
       setError(errorMessage);
     }
   };
@@ -90,7 +91,7 @@ function Signup() {
           placeholder="ADMIN"
         />
         <button className="button" type="submit">SIGN-UP</button>
-        <button className="button" type="submit" onClick={handleLoginClick}>LOG-IN</button>
+        <button className="button" type="button" onClick={handleLoginClick}>LOG-IN</button>
       </form>
     </div>
   );

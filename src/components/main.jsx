@@ -120,12 +120,12 @@ function Main() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "jwt": `${token}`,
+                        "Authorization": `Bearer ${token}`
                     }
                 }
             );
     
-            if (response.status === 201 || response.status === 200) {
+            if (response.status === 201 || response.status === 200 || response.status === 204) {
                 setShowEditPopup(false);
                 setEditingItem(null);
                 setFormData({ name: "", price: "", quantity: "", category: "" });
@@ -146,8 +146,8 @@ function Main() {
                 `https://ims-backend-2qfp.onrender.com/products/${editingItem._id}`,
                 {
                     headers: {
-                        "jwt": `${token}`,
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
                     }
                 }
             );

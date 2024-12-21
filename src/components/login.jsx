@@ -11,9 +11,9 @@ function Login() {
     password: '',
   });
 
-  const [error, setError] = useState(''); // State for error messages
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login, setToken } = useAuth(); // We'll update AuthContext to include setToken
+  const { login, setToken } = useAuth();
 
   const handleChange = (e) => {
     setFormData({
@@ -24,7 +24,7 @@ function Login() {
   };
 
   const handleSignUpClick = () => {
-    navigate("/signup"); // Replace "/signup" with the desired route
+    navigate("/signup");
   };
 
 
@@ -33,7 +33,6 @@ function Login() {
     try {
       const response = await axios.post('https://ims-backend-2qfp.onrender.com/login', formData);
       if (response.status === 200 || response.status === 201) {
-        // Assuming the token is returned in the response data with a key 'token'
         console.log(response.data.jwt);
         const token = response.data.jwt; 
         login(); // This will still set isAuthenticated to true
@@ -43,16 +42,9 @@ function Login() {
       }
     } catch (error) {
       if (error.response) {
-        // Assuming the backend sends specific messages for username/password errors
-        if (error.response.data.message === "Invalid username") {
-          setError("Username does not exist.");
-        } else if (error.response.data.message === "Invalid password") {
-          setError("Wrong password.");
-        } else {
-          setError("Login failed. Please check your credentials.");
-        }
+        setError("Login failed. Please check your credentials.");
       } else {
-        setError("An error occurred while logging in.");
+        setError("An error occurred while logging in. Please wait a moment and try again.");
       }
       console.error('Error logging in:', error);
     }
@@ -80,7 +72,7 @@ function Login() {
           placeholder="ADMIN" 
         />
         <button className="buttonLogin" type="submit">LOGIN</button>
-        <button className="button">SIGN-UP</button>
+        <button className="button" type="button" onClick={handleSignUpClick}>SIGN-UP</button>
       </form>
     </div>
   );

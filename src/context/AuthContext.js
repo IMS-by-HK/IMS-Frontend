@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = () => {
     setIsAuthenticated(true);
+    setIsLoggedIn(true);
   };
 
   // Function to set token which updates state and localStorage
