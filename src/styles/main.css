@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-:root {
-    --produce-color: #CEF86D;
-    --frozen-color: #9BEEFF;
-    --fridge-color: #ffc8dd;
-    --deli-color: #F99891;
-    --bakery-color: #FFD16D;
-    --dry-color: #FFE564;
-}
-
 body {
     display: flex;
     justify-content: center;
@@ -132,7 +123,7 @@ font-family: 'Inria Sans', sans-serif;
     width: 1200px;
     padding: 25px;
     margin-top: 50px;
-    border: 1px solid #747474;
+    border: 1px solid #acacac;
     border-radius: 10px;
 
     box-sizing: border-box; 
